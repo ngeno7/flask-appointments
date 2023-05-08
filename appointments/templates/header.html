@@ -3,20 +3,6 @@
     <div class="app-navbar flex-shrink-0">
         <!--begin::Activities-->
         <div class="app-navbar-item ms-1 ms-md-3">
-            <!--begin::Drawer toggle-->
-            <div class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px" id="kt_activities_toggle">
-                <!--begin::Svg Icon | path: icons/duotune/general/gen032.svg-->
-                <span class="svg-icon svg-icon-2 svg-icon-md-1">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="8" y="9" width="3" height="10" rx="1.5" fill="currentColor" />
-                        <rect opacity="0.5" x="13" y="5" width="3" height="14" rx="1.5" fill="currentColor" />
-                        <rect x="18" y="11" width="3" height="8" rx="1.5" fill="currentColor" />
-                        <rect x="3" y="13" width="3" height="6" rx="1.5" fill="currentColor" />
-                    </svg>
-                </span>
-                <!--end::Svg Icon-->
-            </div>
-            <!--end::Drawer toggle-->
         </div>
         <!--end::Activities-->
         <!--begin::User menu-->
@@ -37,9 +23,8 @@
                         <!--end::Avatar-->
                         <!--begin::Username-->
                         <div class="d-flex flex-column">
-                            <div class="fw-bold d-flex align-items-center fs-5">Max Smith
+                            <div class="fw-bold d-flex align-items-center fs-5">{{ user and user.name }}
                             <span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Pro</span></div>
-                            <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">max@kt.com</a>
                         </div>
                         <!--end::Username-->
                     </div>
@@ -54,99 +39,9 @@
                 </div>
                 <!--end::Menu item-->
                 <!--begin::Menu item-->
-                <div class="menu-item px-5">
-                    <a href="#" class="menu-link px-5">
-                        <span class="menu-text">My Projects</span>
-                        <span class="menu-badge">
-                            <span class="badge badge-light-danger badge-circle fw-bold fs-7">3</span>
-                        </span>
-                    </a>
-                </div>
-                <!--end::Menu item-->
-                <!--begin::Menu item-->
-                <div class="menu-item px-5" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="left-start" data-kt-menu-offset="-15px, 0">
-                    <a href="#" class="menu-link px-5">
-                        <span class="menu-title">My Subscription</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <!--begin::Menu sub-->
-                    <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-3">
-                            <a href="#" class="menu-link px-5">Referrals</a>
-                        </div>
-                        <!--end::Menu item-->
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-3">
-                            <a href="#" class="menu-link px-5">Billing</a>
-                        </div>
-                        <!--end::Menu item-->
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-3">
-                            <a href="#" class="menu-link px-5">Payments</a>
-                        </div>
-                        <!--end::Menu item-->
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-3">
-                            <a href="#" class="menu-link d-flex flex-stack px-5">Statements
-                            <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="View your statements"></i></a>
-                        </div>
-                        <!--end::Menu item-->
-                        <!--begin::Menu separator-->
-                        <div class="separator my-2"></div>
-                        <!--end::Menu separator-->
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-3">
-                            <div class="menu-content px-3">
-                                <label class="form-check form-switch form-check-custom form-check-solid">
-                                    <input class="form-check-input w-30px h-20px" type="checkbox" value="1" checked="checked" name="notifications" />
-                                    <span class="form-check-label text-muted fs-7">Notifications</span>
-                                </label>
-                            </div>
-                        </div>
-                        <!--end::Menu item-->
-                    </div>
-                    <!--end::Menu sub-->
-                </div>
-                <!--end::Menu item-->
-                <!--begin::Menu item-->
-                <div class="menu-item px-5">
-                    <a href="#" class="menu-link px-5">My Statements</a>
-                </div>
-                <!--end::Menu item-->
-                <!--begin::Menu separator-->
-                <div class="separator my-2"></div>
-                <!--end::Menu separator-->
-                <!--begin::Menu item-->
-                <div class="menu-item px-5" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="left-start" data-kt-menu-offset="-15px, 0">
-                    <a href="#" class="menu-link px-5">
-                        <span class="menu-title position-relative">Language
-                        <span class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">English
-                        <img class="w-15px h-15px rounded-1 ms-2" src="{{ url_for('static', filename='media/flags/united-states.svg') }}" alt="" /></span></span>
-                    </a>
-                    <!--begin::Menu sub-->
-                    <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-3">
-                            <a href="#" class="menu-link d-flex px-5 active">
-                            <span class="symbol symbol-20px me-4">
-                                <img class="rounded-1" src="{{ url_for('static', filename='media/flags/united-states.svg') }}" alt="" />
-                            </span>English</a>
-                        </div>
-                        <!--end::Menu item-->
-                    </div>
-                    <!--end::Menu sub-->
-                </div>
-                <!--end::Menu item-->
-                <!--begin::Menu item-->
-                <div class="menu-item px-5 my-1">
-                    <a href="#" class="menu-link px-5">Account Settings</a>
-                </div>
-                <!--end::Menu item-->
-                <!--begin::Menu item-->
-                <div class="menu-item px-5">
-                    <a href="#" class="menu-link px-5">Sign Out</a>
-                </div>
+                <form class="menu-item px-5" method="POST" action="{{ url_for('auth.logout') }}">
+                    <button type="submit" class="btn d-flex px-5">Sign Out</button>
+                </form>
                 <!--end::Menu item-->
             </div>
             <!--end::User account menu-->

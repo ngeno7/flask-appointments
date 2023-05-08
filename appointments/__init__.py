@@ -19,7 +19,9 @@ DB_HOST = "localhost"
 
 def create_app():
     app = Flask(__name__, instance_relative_config=True)
+    app.secret_key = 'nJzxGoHVuxRi8ODSgkmL'
     app.config["SQLALCHEMY_DATABASE_URI"] = f'postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}/{DB_NAME}'
+    login_manager.login_view = "auth.login"
     db.init_app(app)
     migrate.init_app(app, db)
     login_manager.init_app(app)

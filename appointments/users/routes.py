@@ -1,11 +1,13 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from passlib.hash import pbkdf2_sha256
+from flask_login import login_required
 
 users = Blueprint('users', __name__, template_folder='templates')
 from .models import User
 from ..db import db
 
 @users.route('/users', methods=['GET', 'POST'])
+@login_required
 def index():
     user = User()
     if request.form.get('id'):

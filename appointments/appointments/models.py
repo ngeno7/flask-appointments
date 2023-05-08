@@ -1,6 +1,8 @@
 from sqlalchemy import func
 from ..db import db
 
+from marshmallow import Schema, fields
+
 class Appointment(db.Model):
     __tablename__ = 'appointments'
     id = db.Column(db.Integer, primary_key=True)
@@ -12,3 +14,8 @@ class Appointment(db.Model):
     created_at = db.Column(db.DateTime(timezone=True),
                            server_default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete="cascade"))
+
+AppointmentSchema = Schema.from_dict({
+    "id": fields.Int(), "title": fields.Str(), "description": fields.Str(), 
+    "status": fields.Int(), "date": fields.Date(), "time": fields.Time()
+})

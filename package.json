@@ -1,0 +1,24 @@
+{
+  "name": "appointments",
+  "version": "1.0.0",
+  "description": "```\r   set FLASK_APP=app\r   set FLASK_ENV=development\r   flask run\r ```",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "laravel-mix": "^6.0.49",
+    "vue-loader": "^16.8.3"
+  },
+  "dependencies": {
+    "@fullcalendar/core": "^6.1.6",
+    "@fullcalendar/daygrid": "^6.1.6",
+    "@fullcalendar/interaction": "^6.1.6",
+    "@fullcalendar/vue3": "^6.1.6",
+    "axios": "^1.4.0",
+    "vue": "^3.2.36"
+  }
+}
