@@ -1,0 +1,50 @@
+{% extends 'layouts.html' %}
+
+{% block content %}
+<div class="card">
+    <!--begin::Card header-->
+    <div class="card-body py-4">
+        <div class="row">
+            <div class="col-12 text-end mb-2">
+                <button 
+                    data-bs-toggle="modal" data-bs-target="#appointmentFormModal"
+                    class="btn btn-sm btn-info">Add Appointment</button>
+            </div>
+            {% include 'appointments/add.html' %}
+            <div class="col-12 table-responsive">
+                <table class="table">
+                    <thead class="bg-secondary">
+                        <tr>
+                            <th>Appointment</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for appointment in appointments %}
+                        <tr>
+                            <td>{{ appointment.title }}</td>
+                            <td>{{ appointment.date }}</td>
+                            <td>{{ appointment.time }}</td>
+                            <td>{{ appointment.description or '-' }}</td>
+                            <td style="max-width:10rem;">
+                                <button 
+                                    data-bs-toggle="modal" data-bs-target="#appointmentFormModal{{appointment.id}}"
+                                    class="btn btn-sm btn-info">Edit</button>
+                                    {% include 'appointments/edit.html' %}
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td class="text-center" colspan="5">No Appointments</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

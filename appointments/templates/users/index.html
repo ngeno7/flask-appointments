@@ -1,0 +1,82 @@
+{% extends 'layouts.html' %}
+
+{% block content %}
+<div class="card">
+    <!--begin::Card header-->
+    <div class="card-header border-0 pt-6">
+        <!--begin::Card title-->
+        <div class="card-title">
+            <!--begin::Search-->
+            <div class="d-flex align-items-center position-relative my-1">
+                <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
+                <span class="svg-icon svg-icon-1 position-absolute ms-6">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1"
+                            transform="rotate(45 17.0365 15.1223)" fill="currentColor" />
+                        <path
+                            d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z"
+                            fill="currentColor" />
+                    </svg>
+                </span>
+                <!--end::Svg Icon-->
+                <input type="text" data-kt-user-table-filter="search"
+                    class="form-control form-control-solid w-250px ps-14" placeholder="Search user" />
+            </div>
+        </div>
+    </div>
+    <div class="card-body py-4">
+        <div class="row">
+            <div class="col-12">
+                <form class="row" method="POST" action="/users">
+                    <div class="col-md-3 col-12 p-1">
+                        <label for="form-name">Name:</label>
+                        <input type="text" name="name" required id="form-name" class="form-control form-control-sm">
+                    </div>
+                    <div class="col-md-3 col-12 p-1">
+                        <label for="form-username">Username:</label>
+                        <input type="text" name="username" required id="form-username" class="form-control form-control-sm">
+                    </div>
+                    <div class="col-md-3 col-12 p-1">
+                        <label for="form-password">Password:</label>
+                        <input type="text" name="password" required id="form-password" class="form-control form-control-sm">
+                    </div>
+                    <div class="col-md-3 col-12 p-1">
+                        <button class="btn btn-sm btn-primary mt-6">Save</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-12 p-1">
+                <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
+                    <thead class="bg-secondary">
+                        <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                            <th>User</th>
+                            <th>Username</th>
+                            <th>Created At</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-600 fw-semibold">
+                        {% for user in users %}
+                        <tr>
+                            <td>{{ user.name }}</td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.created_at }}</td>
+                            <td>
+                                <button 
+                                    data-bs-toggle="modal" data-bs-target="#userEditModal{{user.id}}"
+                                    class="btn btn-sm btn-info">Edit</button>
+                                {% include "users/form.html" %}
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td class="text-center" colspan="4">No users</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

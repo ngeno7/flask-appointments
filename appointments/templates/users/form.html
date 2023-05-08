@@ -1,0 +1,36 @@
+<div class="modal fade" id="userEditModal{{user.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Edit User</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form class="row" id="edit-user-form-{{ user.id }}" method="POST" action="/users">
+                <input type="hidden" name="id" value="{{ user.id }}">
+                <div class="col-12 p-1">
+                    <label for="form-name-{{ user.id }}">Name:</label>
+                    <input type="text" name="name" required 
+                        value="{{ user.name }}"
+                        id="form-name-{{ user.id }}" class="form-control form-control-sm">
+                </div>
+                <div class="col-12 p-1">
+                    <label for="form-username-{{ user.id }}">Username:</label>
+                    <input type="text" name="username" required 
+                        value="{{ user.username }}"
+                        id="form-username-{{ user.id }}" class="form-control form-control-sm">
+                </div>
+                <div class="col-12 p-1">
+                    <label for="form-password-{{ user.id }}">Password:</label>
+                    <input type="text" name="password" required 
+                        id="form-password-{{ user.id }}" class="form-control form-control-sm">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" form="edit-user-form-{{ user.id }}" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
