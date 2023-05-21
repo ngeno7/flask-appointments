@@ -4,7 +4,7 @@
             <button 
                 type="button" data-bs-toggle="modal" 
                 :data-bs-target="`#exampleModal${arg.event.id}`"
-                class="btn btn-sm">{{ arg.event.title }}</button>
+                class="btn btn-sm">{{ `${arg.event.title} - ${arg.event.extendedProps.time}` }}</button>
         </template>
     </FullCalendar>
     <div v-for="event in events">
@@ -32,7 +32,7 @@ export default {
             return {
                 plugins: [dayGridPlugin, interactionPlugin],
                 initialView: 'dayGridMonth',
-                events: this.events.map(event => ({ title: event.title, date: event.date, id: event.id }))
+                events: this.events.map(event => ({ title: event.title, date: event.date, id: event.id, time: event.time })).sort()
             };
         },
     },

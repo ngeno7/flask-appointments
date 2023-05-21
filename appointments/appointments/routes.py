@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, url_for, redirect, jsonify
 from flask_login import login_required
+from sqlalchemy import asc
 
-import json
 from ..db import db
 from .models import Appointment, AppointmentSchema
 appointments = Blueprint('appointments', __name__)
@@ -10,7 +10,7 @@ appointments = Blueprint('appointments', __name__)
 @appointments.route('/appointments', methods=['GET', 'POST'])
 @login_required
 def index():
-    appointments = Appointment.query.all()
+    appointments = Appointment.query.order_by(asc(Appointment.time)).all()
     appointment = Appointment()
     if request.form.get('id'):
         appointment = Appointment.query.filter_by(id=request.form.get('id')).first()
